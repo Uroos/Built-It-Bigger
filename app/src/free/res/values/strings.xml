@@ -1,1 +1,6 @@
-<resources></resources>
+<resources>
+    <string name="interstitial_ad_id">/6499/example/interstitial</string>
+    <string name="intent_key_joke">joke</string>
+    <string name="btn_free">Free Button</string>
+    <string name="tv_free_label">Text view in free version</string>
+</resources>

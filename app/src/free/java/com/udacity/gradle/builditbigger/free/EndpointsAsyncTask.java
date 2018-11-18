@@ -1,9 +1,8 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.builditbigger.free;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.util.Pair;
-import android.widget.Toast;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
@@ -19,7 +18,7 @@ import javax.annotation.Nullable;
 public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
-    OnUpdateListener listener;
+    EndpointsAsyncTask.OnUpdateListener listener;
     @Nullable
     public SimpleIdlingResource simpleIdlingResource;
 
@@ -27,13 +26,11 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
         void onUpdate(String s);
     }
 
-    public void setUpdateListener(OnUpdateListener listener) {
+    public void setUpdateListener(EndpointsAsyncTask.OnUpdateListener listener) {
         this.listener = listener;
     }
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
-        // The IdlingResource is null in production.
-
         if (myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -49,7 +46,6 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
                         }
                     });
             // end options for devappserver
-
             myApiService = builder.build();
         }
 
