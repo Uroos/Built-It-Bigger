@@ -1,0 +1,25 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- Remove the package info here in manifest tag to remove manifest merge error-->
+    <application>
+        <activity android:name="com.udacity.gradle.builditbigger.free.MainActivity">
+            <!-- https://stackoverflow.com/questions/32320585/how-to-use-a-different-launcher-activity-in-a-product-flavor
+                 the below stuff in the intent filter ensures that the main activity in the free folder is launched
+                 when freedebug is selected.
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--This meta-data tag is required to use Google Play Services.-->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <!--Include the AdActivity configChanges and theme. -->
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent" />
+    </application>
+</manifest>

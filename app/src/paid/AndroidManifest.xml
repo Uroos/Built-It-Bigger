@@ -1,0 +1,17 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Remove the package info here in manifest tag to remove manifest merge error-->
+
+    <application>
+        <activity android:name="com.udacity.gradle.builditbigger.paid.MainActivity">
+            <!-- https://stackoverflow.com/questions/32320585/how-to-use-a-different-launcher-activity-in-a-product-flavor
+                 the below stuff in the intent filter ensures that the main activity in the paid folder is launched
+                 when paiddebug is selected.
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
