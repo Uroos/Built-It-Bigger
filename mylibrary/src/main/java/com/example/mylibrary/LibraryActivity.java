@@ -11,12 +11,14 @@ public class LibraryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
-        String joke=getIntent().getStringExtra("joke");
-        TextView tv = findViewById(R.id.textViewLibrary);
-        if(joke!=null|| !TextUtils.isEmpty(joke)) {
-            tv.setText(joke);
-        }else{
-            tv.setText("Error receiving from cloud.");
+        if(getIntent().hasExtra(getString(R.string.intent_key_joke))) {
+            String joke = getIntent().getStringExtra(getString(R.string.intent_key_joke));
+            TextView tv = findViewById(R.id.textViewLibrary);
+            if (!TextUtils.isEmpty(joke)) {
+                tv.setText(joke);
+            } else {
+                tv.setText("Error receiving from cloud.");
+            }
         }
     }
 }
